@@ -57,7 +57,7 @@ var Hotel = function(type){
 var Shelter = function(type) {
   this.walkable=false;
   this.image=new Image();
-  this.image.src="images/tiles/cross-road.png";
+  this.image.src="images/tiles/shelter.png";
   this.interact= function() {
     showEnding("You found shelter, they with the help of the council helped you get a new home, they gave you financial advice and soon after you found a new job, things can now go back to the way they used to be. Your life is back to normal.");
   }
