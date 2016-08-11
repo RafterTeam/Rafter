@@ -35,7 +35,7 @@ function RespondAction(value){
 
 }
 function respond() {
-  respond(document.querySelector('input[name="option"]:checked').value);
+  RespondAction(document.querySelector('input[name="option"]:checked').value);
 }
 var endingText;
 function showEnding(ending) {
