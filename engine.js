@@ -6,7 +6,6 @@ canvas.addEventListener("touchstart", onTouchStart, false);
 var w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 var running = true;
-var ending = "";
 
 //utility random function
 function random() {
@@ -32,11 +31,11 @@ function sendMessage(message, op1, op2, op3) {
   document.getElementById("optionB").innerHTML=op2;
   document.getElementById("optionC").innerHTML=op3;
 }
-function Respond(){
+function Respond(value){
 
 }
 function readResponse() {
-  respond();
+  respond(document.querySelector('input[name="option"]:checked').value);
 }
 var endingText;
 function showEnding(ending) {
@@ -141,7 +140,7 @@ function render() {
     context.textBaseLine = "top";
     context.fillText("|Health: "+player.health+", Food: "+player.food+", Money: "+player.money+"|", 32, 32);
   } else {
-    context.fillStyle = "rgb(250, 250, 250)";
+    context.fillStyle = "rgb(0, 0, 0)";
     context.font = "24px Helvetica";
     context.textAlign = "left";
     context.textBaseLine = "top";

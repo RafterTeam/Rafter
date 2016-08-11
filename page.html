@@ -7,26 +7,62 @@
         margin: 0px;
         padding: 0px;
       }
+      .radio {
+        -moz-appearance: none;
+      }
+      .canvas {
+        width: 896px;
+        height: 896px;
+        float:left;
+        margin-right: 10px;
+      }
+      #header {
+        float: right;
+        width: 372px;
+        word-wrap: break-word;
+        border-left: 4px solid #005;
+        font-size: 14px;
+      }
+      .description {
+        border-top: 4px solid #005;
+      }
+      .help {
+        border-top: 4px solid #005;
+      }
     </style>
   </head>
   <body>
-    <canvas id="myCanvas" width="896" height="896" style="border: 4px solid gray;"></canvas>
+    <canvas class="canvas" id="myCanvas" width="896" height="896" style="border: 4px solid gray;"></canvas>
     <script src="perlin.js"></script>
     <script src="characters.js"></script>
     <script src="tiles.js"></script>
     <script src="engine.js"></script>
     <div id="header">
-      <img src="images/title.png" width="512" height="512">
-      <p> This game was created to show It's players some of the issues faced by people who are homeless, and the ways that Shelter, the charity it was made for can help somebody in that situation. <br>
-        To help Shelter to continue their work, Please donate to them here: <a href="shelter.org.uk">Donate To Shelter</a>
+      <img src="images/title.png" width="372" height="372">
+      <p> This game was created to show
+        It's players some of the issues faced by
+        people who are homeless, and the ways that
+        Shelter, the charity it was made for can
+        help somebody in that situation.
+        To help Shelter to continue their work,
+        Please donate to them here: <a href="shelter.org.uk">Donate To Shelter</a>
+      </p>
+      <p class="description">
+        Our game is called Homeless it is a top down retro game about being homeless. The goal of the game is to find Shelter so you can get a new home. There are multiple places in the game that can help you on your journey such as Shops, Hospitals and Hotels these building are interactive and will give options when you select them. The stats for your character are Health, Hunger and Money.
+      </p>
+      <p class="help">
+        help contents
+      </p>
     </div>
     <p id="output">
     </p>
-    <form action="" name="interact" id="interface">
-      <input type="radio" name="option" value="a" /> <p id="optionA"></p>
-      <input type="radio" name="option" value="b" /> <p id="optionB"></p>
-      <input type="radio" name="option" value="c" /> <p id="optionC"></p>
+      <p id="optionA"></p><br>
+      <input type="radio" name="option" value="1" class="radio" />
+      <p id="optionB"></p><br>
+      <input type="radio" name="option" value="2" class="radio" />
+      <p id="optionC"></p><br>
+      <input type="radio" name="option" value="3" class="radio" />
+      <br>
       <input type="button" name="submit" value="submit" action="respond();" />
-    </form>
   </body>
 </html>

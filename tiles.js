@@ -59,6 +59,6 @@ var Shelter = function(type) {
   this.image=new Image();
   this.image.src="images/tiles/cross-road.png";
   this.interact= function() {
-    showEnding("ending message");
+    showEnding("ending message for shelter");
   }
 }
