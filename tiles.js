@@ -18,7 +18,7 @@ var Shop = function() {
     } else {
       sendMessage("Shop hostile message", "rob shop for food", "buy from shop", "leave");
     }
-    Respond = function(value) {
+    RespondAction = function(value) {
       if(value == 1) {
         player.money+=(-5);
         player.food+=(5);
@@ -42,7 +42,7 @@ var Hotel = function(type){
     } else {
       sendMessage("Hotel hostile message", "buy a stay", "sneak in", "leave");
     }
-    Respond = function(value) {
+    RespondAction = function(value) {
       if(value == 1) {
         player.money+=(-5);
         player.health+=(5);
@@ -59,6 +59,6 @@ var Shelter = function(type) {
   this.image=new Image();
   this.image.src="images/tiles/cross-road.png";
   this.interact= function() {
-    showEnding("ending message for shelter");
+    showEnding("You found shelter, they with the help of the council helped you get a new home, they gave you financial advice and soon after you found a new job, things can now go back to the way they used to be. Your life is back to normal.");
   }
 }

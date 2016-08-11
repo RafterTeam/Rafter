@@ -31,10 +31,10 @@ function sendMessage(message, op1, op2, op3) {
   document.getElementById("optionB").innerHTML=op2;
   document.getElementById("optionC").innerHTML=op3;
 }
-function Respond(value){
+function RespondAction(value){
 
 }
-function readResponse() {
+function respond() {
   respond(document.querySelector('input[name="option"]:checked').value);
 }
 var endingText;
@@ -140,11 +140,12 @@ function render() {
     context.textBaseLine = "top";
     context.fillText("|Health: "+player.health+", Food: "+player.food+", Money: "+player.money+"|", 32, 32);
   } else {
-    context.fillStyle = "rgb(0, 0, 0)";
+    context.fillStyle = "rgb(0, 0, 255)";
     context.font = "24px Helvetica";
     context.textAlign = "left";
     context.textBaseLine = "top";
     context.fillText(endingText);
+    sendMessage(endingText, "", "", "");
   }
 }
 //set main game loop
