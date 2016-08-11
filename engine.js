@@ -55,7 +55,7 @@ for (i=0; i < (XTiles+1); i++) {
 }
 for (var x = 0; x < XTiles +1; x++) {
   for (var y = 0; y < YTiles +1; y++) {
-    var value = Math.random();
+    var value = random();
     if(x == 0) {
       tiles[x][y] = new Road();
     } else if(x==3) {
@@ -72,7 +72,7 @@ for (var x = 0; x < XTiles +1; x++) {
       tiles[x][y] = new Shelter();
     } else if (value < 0) {
       tiles[x][y] = new Shop();
-    } else if (value > 0) {
+    } else {
       tiles[x][y] = new Hotel();
     }
   }
