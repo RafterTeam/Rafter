@@ -18,7 +18,15 @@ var Shop = function() {
     } else {
       sendMessage("Shop hostile message", "rob shop for food", "buy from shop", "leave");
     }
-
+    Respond = function(value) {
+      if(value == 1) {
+        player.money+=(-5);
+        player.food+=(5);
+      } else if(value == 2) {
+        player.food+=(5);
+        player.helth+=(-10);
+      }
+    }
   }
 }
 //Hotel class
@@ -29,20 +37,28 @@ var Hotel = function(type){
   this.mood=1;
   this.interact = function() {
     if(this.mood=1) {
-      sendMessage("Shop friendly message", "buy a stay", "sneak in", "leave");
+      sendMessage("Hotel friendly message", "buy a stay", "sneak in", "leave");
 
     } else {
-      sendMessage("Shop hostile message", "buy a stay", "sneak in", "leave");
+      sendMessage("Hotel hostile message", "buy a stay", "sneak in", "leave");
     }
-
+    Respond = function(value) {
+      if(value == 1) {
+        player.money+=(-5);
+        player.health+=(5);
+      } else if(value == 2) {
+        player.health+=(5);
+        player.food+=(-5);
+      }
+    }
   }
 }
 //Shelter class
 var Shelter = function(type) {
   this.walkable=false;
   this.image=new Image();
-  this.image.src="images/tiles/cross-road.png"
+  this.image.src="images/tiles/cross-road.png";
   this.interact= function() {
-    showEnding()
+    showEnding("ending message");
   }
 }

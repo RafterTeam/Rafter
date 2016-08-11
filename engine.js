@@ -5,18 +5,24 @@ canvas.addEventListener("mousedown", onMouseDown, false);
 canvas.addEventListener("touchstart", onTouchStart, false);
 var w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
+var running = true;
+var ending = "";
+
 //utility random function
 function random() {
   min = Math.ceil(-1);
   max = Math.floor(1);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 //setup player images.
 playerImage = new Image();
 playerImage.onload = function() {
   player.ready = true;
 }
 playerImage.src="images/characters/player/Walking/w1.png"
+
+
 
 //setup player multiple choice interface
 var currentInteraction = 0;
@@ -26,9 +32,20 @@ function sendMessage(message, op1, op2, op3) {
   document.getElementById("optionB").innerHTML=op2;
   document.getElementById("optionC").innerHTML=op3;
 }
-function readResponse() {
+function Respond(){
 
 }
+function readResponse() {
+  respond();
+}
+var endingText;
+function showEnding(ending) {
+  running=false;
+  endingText=ending;
+}
+
+
+
 //Set the tile by tile dimentions of the world, tile count starts from 0.
 var XTiles=13;
 var YTiles=13;
@@ -100,47 +117,36 @@ function update() {
     player.yReq=0;
   }
 }
-function render() {/*
-  var screenX = player.x-400;
-  var originalScreenY = player.y-300;
-  var screenY = player.y-300;
-  var drawX = 0;
-  var drawY = 0;
-  var width = screenX + 800;
-  var height = screenY + 600;
-  for (screenX; screenX < width; screenX += 64) {
-    screenY=originalScreenY;
-    for (screenY; screenY < height; screenY += 64) {
-      var tempTile = getTileAtGlobal(screenX, screenY);
-      if(tempTile != 0) {
-        context.drawImage(tempTile.image, drawX, drawY);
-      }
-      drawY+=64;
-    }
-    drawY+=64;
-  }
-  */
+function render() {
   context.clearRect(0, 0, canvas.width, canvas.height);
-  //display player stats as text on the top of the scren
-  context.font = "24px Helvetica";
-  context.textAlign = "left";
-  context.textBaseLine = "top";
-  context.fillText("|Health: "+player.health+", Food: "+player.food+", Money: "+player.money+"|", 32, 32);
-  //draw the tile grid on the screen
-  var drawx = 0;
-  var drawy = 0;
-  for (var x = 0; x < XTiles +1; x++) {
-    drawy=0;
-    for (var y = 0; y < YTiles +1; y++) {
-      var tempTile = tiles[x][y];
-      context.drawImage(tempTile.image, drawx, drawy);
-      drawy+=64;
+  if(running) {
+    //draw the tile grid on the screen
+    var drawx = 0;
+    var drawy = 0;
+    for (var x = 0; x < XTiles +1; x++) {
+      drawy=0;
+      for (var y = 0; y < YTiles +1; y++) {
+        var tempTile = tiles[x][y];
+        context.drawImage(tempTile.image, drawx, drawy);
+        drawy+=64;
+      }
+      drawx+=64;
     }
-    drawx+=64;
+    //draw the player.
+    context.drawImage(playerImage, player.x-8, player.y-8);
+    //display player stats as text on the top of the scren
+    context.fillStyle = "rgb(250, 250, 250)";
+    context.font = "24px Helvetica";
+    context.textAlign = "left";
+    context.textBaseLine = "top";
+    context.fillText("|Health: "+player.health+", Food: "+player.food+", Money: "+player.money+"|", 32, 32);
+  } else {
+    context.fillStyle = "rgb(250, 250, 250)";
+    context.font = "24px Helvetica";
+    context.textAlign = "left";
+    context.textBaseLine = "top";
+    context.fillText(endingText);
   }
-  //draw the player.
-  context.drawImage(playerImage, player.x-8, player.y-8);
-
 }
 //set main game loop
 function main () {
